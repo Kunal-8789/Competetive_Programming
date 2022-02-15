@@ -107,60 +107,21 @@ void solution()
 {
     int i, j, k, n, m;
     cin >> n;
-    vi v(n), temp, ans, sumf(n), sumr(n);
+    vi v(n), temp, ans, e, o;
     int a[n + 1];
     mii mp;
     fo(i, n)
     {
         cin >> v[i];
+        v[i] & 1 ? o.pb(v[i]) : e.pb(v[i]);
     }
-    fo(i,n)
-    {
-        if(i==0)
-        {
-            sumf[0]=v[i];
-            sumr[n-1]=v[n-1];
-        }
-        else
-        {
-            sumf[i]= sumf[i-1]+v[i];
-            sumr[n-i-1]= sumr[n-i]+v[n-i-1];
-        }
-    }
-    dbg(sumf, sumr);
-    ans = v; //
-    temp = v;
+    ans = o, temp = e;
     sort(all(ans));
-    
-    // fo(i, n - 1)
-    // {
-    //     if (mp[ans[i]] != i)
-    //     {
-    //         bool found = false;
-    //         if (ans[i] & 1)
-    //         {
-    //             found = binary_search(a + i, a + mp[ans[i]], 1);
-    //         }
-    //         else
-    //         {
-    //             found = binary_search(a + i, a + mp[ans[i]], 0);
-    //         }
-    //     dbg(mp,found);
-
-    //         if (found)
-    //         {
-    //             cout << "No" << endl;
-    //             return;
-    //         }
-    //         else
-    //         {
-    //             swap(temp[i],temp[mp[ans[i]]]);
-    //             mp[temp[i]] = mp[ans[i]];
-    //             mp[ans[i]] = i;
-    //         }
-    //     }
-    // }
-    cout << "Yes" << endl;
+    sort(all(temp));
+    if (ans == o and temp == e)
+        cout << "Yes" << endl;
+    else
+        cout << "No" << endl;
 }
 /* ========== YOUR CODE HERE ========= */
 
